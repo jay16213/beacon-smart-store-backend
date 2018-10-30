@@ -8,7 +8,7 @@ const sassMiddleware = require('node-sass-middleware')
 
 // routers
 const indexRouter = require('./routes/index')
-const beaconRouter = require('./routes/beacon')
+const beaconRouter = require('./routes/beacons')
 const apiRouter = require('./routes/api')
 
 // mongodb
@@ -38,7 +38,7 @@ app.use(sassMiddleware({
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/', indexRouter)
-app.use('/beacon', beaconRouter)
+app.use('/beacons', beaconRouter)
 app.use('/api', apiRouter)
 
 // catch 404 and forward to error handler

@@ -3,21 +3,21 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <form method="POST" action="/beacon/edit/<%= beacon._id %>">
+      <form method="POST" action="/beacons/create">
 
         <div class="form-group">
           <label>UUID</label>
-          <input type="text" name="uuid" class="form-control" value="<%= beacon.uuid %>">
+          <input type="text" name="uuid" class="form-control">
         </div>
 
         <div class="form-group">
           <label>Product id</label>
-          <input type="text" name="product_id" class="form-control" value="<%= beacon.product_id %>">
+          <input type="text" name="product_id" class="form-control">
         </div>
 
         <div class="form-group">
           <label>Product name</label>
-          <input type="text" name="product_name" class="form-control" value="<%= beacon.product_name %>">
+          <input type="text" name="product_name" class="form-control">
         </div>
 
         <div class="form-group">

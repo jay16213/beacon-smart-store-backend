@@ -3,10 +3,23 @@ const router = express.Router()
 
 const Beacon = require('../models/beacon')
 
-// route: /beacon/*
+// route: /beacons/*
+
+router.get('/', (req, res) => {
+  Beacon.find({}, (err, result) => {
+    if (err) {
+      console.log(err)
+    }
+    console.log(result)
+    res.render('beacons', {
+      title: 'Beacons',
+      beacons: result
+    })
+  })
+})
 
 router.get('/create', (req, res) => {
-  res.render('beacon', {
+  res.render('beacons-new', {
     title: 'Create Beacon'
   })
 })
@@ -34,7 +47,7 @@ router.get('/edit/:id', (req, res) => {
       console.log(err)
     }
 
-    res.render('beacon-edit', {
+    res.render('beacons-edit', {
       title: 'Edit Beacon',
       beacon: result
     })
@@ -61,26 +74,13 @@ router.post('/edit/:id', (req, res) => {
   })
 })
 
-router.delete('/:id', (req, res) => {
+router.delete('/destroy/:id', (req, res) => {
   Beacon.findByIdAndDelete(req.params.id, (err) => {
     if (err) {
       console.log(err)
     }
     console.log('Success delete')
     res.end('success')
-  })
-})
-
-router.get('/', (req, res) => {
-  Beacon.find({}, (err, result) => {
-    if (err) {
-      console.log(err)
-    }
-    console.log(result)
-    res.render('beacons', {
-      title: 'Beacons',
-      beacons: result
-    })
   })
 })
 
