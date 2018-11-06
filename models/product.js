@@ -1,9 +1,10 @@
 const mongoose = require('mongoose')
 
-var productSchema = mongoose.Schema({
+let productSchema = mongoose.Schema({
   name: { type: String, required: true },
   price: { type: Number, required: true },
-  expiration: { type: Date }
+  expiration: Date,
+  beacon_uuid: String
 })
 
 module.exports = mongoose.model('Product', productSchema)

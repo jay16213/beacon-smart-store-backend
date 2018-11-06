@@ -26,10 +26,10 @@ router.get('/create', (req, res) => {
 
 router.post('/create', (req, res) => {
   let newProduct = new Product()
-
   newProduct.name = req.body.name
   newProduct.price = req.body.price
   newProduct.expiration = req.body.expiration
+  newProduct.beacon_uuid = req.body.beacon_uuid
 
   newProduct.save((err) => {
     if (err) {
@@ -49,7 +49,8 @@ router.get('/edit/:id', (req, res) => {
 
     res.render('products/edit', {
       title: 'Edit Product',
-      product: data
+      product: data,
+      moment: moment
     })
   })
 })
@@ -63,6 +64,7 @@ router.post('/edit/:id', (req, res) => {
     data.name = req.body.name
     data.price = req.body.price
     data.expiration = req.body.expiration
+    data.beacon_uuid = req.body.beacon_uuid
 
     data.save((err) => {
       if (err) {

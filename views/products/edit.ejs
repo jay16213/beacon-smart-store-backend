@@ -17,7 +17,12 @@
 
         <div class="form-group">
           <label>Expiration (if any)</label>
-          <input type="date" name="expiration" class="form-control" value="<%= product.expiration %>">
+          <input type="date" name="expiration" class="form-control" value="<%= moment(product.expiration).format('YYYY-MM-DD') %>">
+        </div>
+
+        <div class="form-group">
+          <label>Beacon UUID</label>
+          <input type="text" name="beacon_uuid" class="form-control" value="<%= product.beacon_uuid %>">
         </div>
 
         <div class="form-group">

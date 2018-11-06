@@ -8,7 +8,6 @@ const sassMiddleware = require('node-sass-middleware')
 
 // routers
 const indexRouter = require('./routes/index')
-const beaconRouter = require('./routes/beacons')
 const productRouter = require('./routes/products')
 const apiRouter = require('./routes/api')
 
@@ -39,7 +38,6 @@ app.use(sassMiddleware({
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/', indexRouter)
-app.use('/beacons', beaconRouter)
 app.use('/products', productRouter)
 app.use('/api', apiRouter)
 

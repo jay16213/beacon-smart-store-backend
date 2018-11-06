@@ -1,12 +1,12 @@
 const express = require('express')
 const router = express.Router()
 
-const Beacon = require('../models/beacon')
+const Product = require('../models/product')
 
 // route: /api/*
 
-router.get('/beacons', (req, res) => {
-  Beacon.find({}, (err, result) => {
+router.get('/products', (req, res) => {
+  Product.find({}, (err, result) => {
     if (err) {
       console.log(err)
     }
@@ -16,8 +16,8 @@ router.get('/beacons', (req, res) => {
   })
 })
 
-router.get('/beacon/:uuid', (req, res) => {
-  Beacon.findOne({ 'uuid': req.params.uuid }, (err, result) => {
+router.get('/products/:uuid', (req, res) => {
+  Product.findOne({ 'beacon_uuid': req.params.uuid }, (err, result) => {
     if (err) {
       console.log(err)
     }
