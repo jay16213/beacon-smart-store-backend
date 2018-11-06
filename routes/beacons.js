@@ -6,14 +6,14 @@ const Beacon = require('../models/beacon')
 // route: /beacons/*
 
 router.get('/', (req, res) => {
-  Beacon.find({}, (err, result) => {
+  Beacon.find({}, (err, data) => {
     if (err) {
       console.log(err)
     }
-    console.log(result)
+    console.log(data)
     res.render('beacons', {
       title: 'Beacons',
-      beacons: result
+      beacons: data
     })
   })
 })
@@ -42,33 +42,34 @@ router.post('/create', (req, res) => {
 })
 
 router.get('/edit/:id', (req, res) => {
-  Beacon.findById(req.params.id, (err, result) => {
+  Beacon.findById(req.params.id, (err, data) => {
     if (err) {
       console.log(err)
     }
 
     res.render('beacons-edit', {
       title: 'Edit Beacon',
-      beacon: result
+      beacon: data
     })
   })
 })
 
 router.post('/edit/:id', (req, res) => {
-  Beacon.findById(req.params.id, (err, result) => {
+  Beacon.findById(req.params.id, (err, data) => {
     if (err) {
       console.log(err)
     }
 
-    result.uuid = req.body.uuid
-    result.product_id = req.body.product_id
-    result.product_name = req.body.product_name
-    result.save((err) => {
+    data.uuid = req.body.uuid
+    data.product_id = req.body.product_id
+    data.product_name = req.body.product_name
+
+    data.save((err) => {
       if (err) {
         console.log(err)
       }
 
-      console.log(result)
+      console.log(data)
       res.redirect('/beacons')
     })
   })
@@ -79,8 +80,7 @@ router.delete('/destroy/:id', (req, res) => {
     if (err) {
       console.log(err)
     }
-    console.log('Success delete')
-    res.end('success')
+    res.status(200).end()
   })
 })
 

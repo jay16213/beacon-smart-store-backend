@@ -1,0 +1,29 @@
+<% layout('layout') %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <form method="POST" action="/products/create">
+
+        <div class="form-group">
+          <label>Product Name</label>
+          <input type="text" name="name" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label>Product Price</label>
+          <input type="text" name="price" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label>Expiration (if any)</label>
+          <input type="date" name="expiration" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <input type="submit" value="submit" class="form-control btn btn-primary">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

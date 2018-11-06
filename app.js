@@ -9,6 +9,7 @@ const sassMiddleware = require('node-sass-middleware')
 // routers
 const indexRouter = require('./routes/index')
 const beaconRouter = require('./routes/beacons')
+const productRouter = require('./routes/products')
 const apiRouter = require('./routes/api')
 
 // mongodb
@@ -23,7 +24,7 @@ app.set('view engine', 'ejs')
 
 // database setup
 mongoose.Promise = global.Promise
-mongoose.connect('mongodb://localhost/beacon-smart-store')
+mongoose.connect('mongodb://localhost:27017/beacon-smart-store', { useNewUrlParser: true })
 
 app.use(logger('dev'))
 app.use(express.json())
@@ -39,6 +40,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/', indexRouter)
 app.use('/beacons', beaconRouter)
+app.use('/products', productRouter)
 app.use('/api', apiRouter)
 
 // catch 404 and forward to error handler
