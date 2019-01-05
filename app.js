@@ -9,6 +9,7 @@ const sassMiddleware = require('node-sass-middleware')
 // routers
 const indexRouter = require('./routes/index')
 const productRouter = require('./routes/products')
+const promotionRouter = require('./routes/promotions')
 const apiRouter = require('./routes/api')
 
 // mongodb
@@ -39,6 +40,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/', indexRouter)
 app.use('/products', productRouter)
+app.use('/promotions', promotionRouter)
 app.use('/api', apiRouter)
 
 // catch 404 and forward to error handler

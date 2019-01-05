@@ -30,6 +30,7 @@ router.post('/create', (req, res) => {
   newProduct.price = req.body.price
   newProduct.expiration = req.body.expiration
   newProduct.beacon_uuid = req.body.beacon_uuid
+  newProduct.area = req.body.area
 
   newProduct.save((err) => {
     if (err) {
@@ -65,6 +66,7 @@ router.post('/edit/:id', (req, res) => {
     data.price = req.body.price
     data.expiration = req.body.expiration
     data.beacon_uuid = req.body.beacon_uuid
+    data.area = req.body.area
 
     data.save((err) => {
       if (err) {

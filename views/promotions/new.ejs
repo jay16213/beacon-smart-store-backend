@@ -1,0 +1,47 @@
+<% layout('layout') %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <form method="POST" action="/promotions/create">
+
+        <div class="form-group">
+          <label>Promotion Type</label>
+          <select class="form-control" name="promotion_type">
+            <% for (let i = 0; i < promotionType.length; i++) { %>
+              <option value="<%= i %>"><%= promotionType[i] %></option>
+            <% } %>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Product 1</label>
+          <select class="form-control" name="product1_name">
+            <% products.forEach((product) => { %>
+              <option value="<%= product %>"><%= product %></option>
+            <% }) %>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Product 2</label>
+          <select class="form-control" name="product2_name">
+            <option value="" selected>Choose here</option>
+            <% products.forEach((product) => { %>
+              <option value="<%= product %>"><%= product %></option>
+            <% }) %>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Discount (輸入小數點, e.g 7折 請輸入 0.7, 買一送一不用輸入此欄)</label>
+          <input type="number" step="0.01" name="discount" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <input type="submit" value="submit" class="form-control btn btn-primary">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

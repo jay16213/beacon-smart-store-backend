@@ -1,0 +1,62 @@
+<% layout('layout') %>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Promotion type</th>
+            <th scope="col">Product 1</th>
+            <th scope="col">Product 2</th>
+            <th scope="col">Discount</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% promotions.forEach((promotion) => { %>
+            <tr>
+              <td><%= promotionType[promotion.type] %></td>
+              <td><%= promotion.product1_name %></td>
+              <td><%= promotion.product2_name %></td>
+              <% if (promotionType[promotion.type] != 'Buy one get one free') { %>
+                <td><%= Number((promotion.discount*10).toFixed(0)) %> 折</td>
+              <% } else { %>
+                <td>*</td>
+              <% } %>
+              <td>
+                <a href="/promotions/edit/<%= promotion._id %>" class="btn btn-success"><i class="fas fa-pencil-alt"></i></a>
+                <button class="btn btn-danger" onclick="delPromotion('<%= promotion._id %>')"><i class="fas fa-trash-alt"></i></button>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-2">
+      <a href="/promotions/create" class="btn btn-success">new promotion</a>
+    </div>
+    <div clas="col-2">
+      <a href="/" class="btn btn-primary">home</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  function delPromotion(id) {
+    res = confirm('Are you sure to delete this promotion ?')
+    if (res) {
+      $.ajax({
+        url: '/promotions/destroy/' + id,
+        type: 'DELETE',
+        success: () => {
+          location.reload()
+        }
+      })
+    }
+  }
+</script>
