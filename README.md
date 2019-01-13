@@ -10,8 +10,23 @@
     'name': string,
     'price': integer,
     'expiration': date,
-    'beacon_uuid': string
+    'beacon_uuid': string,
+    'area':  string
 }]
+```
+
+### /api/products/:name
+- return product information by product name
+- return type
+```
+{
+    '_id': MongodbObjectId,
+    'name': string,
+    'price': integer,
+    'expiration': date,
+    'beacon_uuid': string,
+    'area':  string
+}
 ```
 
 ### /api/products/:uuid
@@ -24,6 +39,7 @@
   'price': integer,
   'expiration': date,
   'beacon_uuid': string
+  'area':  string
 }
 ```
 
@@ -49,7 +65,18 @@
 ### getProductInfo(uuid_list: list): list
 - give an array of uuids as the parameter
 - return product list in json format
-- example
+- return format
+```
+[{
+    '_id': MongodbObjectId,
+    'name': string,
+    'price': integer,
+    'expiration': date,
+    'beacon_uuid': string,
+    'area':  string
+}]
+```
+- code example
 ```python
 uuid_list = []
 uuid_list.append('123')
@@ -60,6 +87,20 @@ for product in product_list:
   print(product['name'])
   print(product['price'])
   print(product['beacon_uuid'])
+```
+
+### getProductInfoByName(product_name: string)
+- return product information by product_name
+- return format
+```
+{
+    '_id': MongodbObjectId,
+    'name': string,
+    'price': integer,
+    'expiration': date,
+    'beacon_uuid': string,
+    'area':  string
+}
 ```
 
 ### getAllPromotionsInfo(): list

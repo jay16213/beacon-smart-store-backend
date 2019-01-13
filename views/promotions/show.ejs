@@ -21,7 +21,7 @@
               <td><%= promotion.product1_name %></td>
               <td><%= promotion.product2_name %></td>
               <% if (promotionType[promotion.type] != 'Buy one get one free') { %>
-                <td><%= Number((promotion.discount*10).toFixed(0)) %> 折</td>
+                <td><%= Number((promotion.discount*10).toFixed(1)) %> 折</td>
               <% } else { %>
                 <td>*</td>
               <% } %>
