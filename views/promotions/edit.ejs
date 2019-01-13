@@ -9,7 +9,7 @@
           <label>Promotion Type</label>
           <select class="form-control" name="promotion_type">
             <% for (let i = 0; i < promotionType.length; i++) { %>
-              <% if (promotion.promotion_type == i) { %>
+              <% if (promotion.type == i) { %>
                 <option value="<%= i %>" selected><%= promotionType[i] %></option>
               <% } else { %>
                 <option value="<%= i %>"><%= promotionType[i] %></option>

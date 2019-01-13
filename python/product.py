@@ -1,7 +1,7 @@
 import requests
 from collections import Counter
 
-SERVER_URL = 'http://192.168.43.228:3000/api'
+SERVER_URL = 'http://192.168.0.4:3000/api'
 
 PROMOTION_TYPE = [
     'Buy one get one free',
@@ -25,6 +25,10 @@ def getProductInfo(uuid_list):
         product_list[i]['count'] = product_count[product_list[i]['name']]
 
     return product_list
+
+def getProductInfoByName(product_name):
+    res = requests.get(SERVER_URL + '/products/' + product_name)
+    return res.json()
 
 def getAllPromotionsInfo():
     res = requests.get(SERVER_URL + '/promotions').json()
