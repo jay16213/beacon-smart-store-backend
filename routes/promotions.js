@@ -44,6 +44,7 @@ router.get('/create', (req, res) => {
 router.post('/create', (req, res) => {
   let newPromotion = new Promotion()
   newPromotion.type = req.body.promotion_type
+  newPromotion.name = req.body.promotion_name
   newPromotion.product1_name = req.body.product1_name
   newPromotion.product2_name = req.body.product2_name
   newPromotion.discount = req.body.discount || 1
@@ -88,6 +89,7 @@ router.post('/edit/:id', (req, res) => {
     }
 
     data.type = req.body.promotion_type
+    data.name = req.body.promotion_name
     data.product1_name = req.body.product1_name
     data.product2_name = req.body.product2_name
     data.discount = req.body.discount || 0

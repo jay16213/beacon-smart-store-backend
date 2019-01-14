@@ -8,6 +8,7 @@
         <thead>
           <tr>
             <th scope="col">Promotion type</th>
+            <th scope="col">Promotion name</th>
             <th scope="col">Product 1</th>
             <th scope="col">Product 2</th>
             <th scope="col">Discount</th>
@@ -18,6 +19,7 @@
           <% promotions.forEach((promotion) => { %>
             <tr>
               <td><%= promotionType[promotion.type] %></td>
+              <td><%= promotion.name %></td>
               <td><%= promotion.product1_name %></td>
               <td><%= promotion.product2_name %></td>
               <% if (promotionType[promotion.type] != 'Buy one get one free') { %>

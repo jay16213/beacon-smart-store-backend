@@ -49,6 +49,7 @@
 [{
   '_id': MongodbObjectId
   'type': integer,
+  'name': string,
   'product1_name': string,
   'product2_name': string,
   'discount': float
@@ -89,6 +90,9 @@ for product in product_list:
   print(product['beacon_uuid'])
 ```
 
+### getAllProducts(): list
+- return all product name
+
 ### getProductInfoByName(product_name: string)
 - return product information by product_name
 - return format
@@ -109,6 +113,7 @@ for product in product_list:
 [{
   '_id': MongodbObjectId
   'type': integer,
+  'name': string,
   'product1_name': string,
   'product2_name': string,
   'discount': float
@@ -123,6 +128,7 @@ for product in product_list:
 [{
   '_id': MongodbObjectId
   'type': integer,
+  'name': string,
   'product1_name': string,
   'product2_name': string,
   'discount': float

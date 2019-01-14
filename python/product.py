@@ -26,6 +26,11 @@ def getProductInfo(uuid_list):
 
     return product_list
 
+def getAllProducts():
+    res = requests.get(SERVER_URL + '/products').json()
+    product_name = [r['name'] for r in res]
+    return product_name
+
 def getProductInfoByName(product_name):
     res = requests.get(SERVER_URL + '/products/' + product_name)
     return res.json()
